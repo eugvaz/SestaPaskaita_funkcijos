@@ -1,0 +1,262 @@
+import random
+
+print("_______________________1.________________________________")
+# 1. Sukurkite Funkciją kuri priima du kintamuosius, skaičius. Juos susumuoja ir atspausdina.
+
+def sumavimas(a,b): #
+    print(a+b)
+sumavimas(6,8)
+
+print("_______________________2.________________________________")
+# 2. Sukurkite Funkciją kuri vadinasi PISq. Funkcija gražina reikšmę. Reikšmė yra : 9.8596; Gautą reikšmę atspausdinkite.
+
+def PISq():
+    return 9.8596
+kintamasis = PISq()
+print(kintamasis)
+
+print("_______________________3.________________________________")
+# 3. Sukurkite Funkciją kuri priima du kintamuosius. Funkcija gražina skaičių sandaugą.; Gautą reikšmę atspausdinkite.
+def sandauga(a,b): #
+    return (a*b)
+print(sandauga(5,3))
+print(sandauga(1.5,2))
+
+# 4. Sukurkite Funkciją kuri priima masyvą, prasuka ciklą ir atspausdina kiekvieną narį vienoje eilutėje.
+print("_______________________4.________________________________")
+
+masyvas = [1,2,3,4]
+
+def rodyk(masyvas):
+    for i, sk in enumerate(masyvas):
+        print(i,sk)
+
+rodyk(masyvas)
+print("_______________________________________________________")
+masyvas = [1,2,3,4]
+
+def rodyk(masyvas):
+    for i, sk in enumerate(masyvas):
+        print(i,sk, end="")
+        print()
+rodyk(masyvas)
+
+print("_______________________________________________________")
+
+def rodyk(masyvas):
+    for sk in masyvas:
+        print(sk,end=" ")
+    print()
+
+masyvas = [1,2,3,4]
+rodyk(masyvas)
+print("_______________________________________________________")
+masyvas = ['varle','gyvate','ziogas']
+rodyk(masyvas)
+print("_______________________________________________________")
+masyvas = [random.randint(100,999) for _ in range(100)]
+rodyk(masyvas)
+# 5. Sukurkite Funkciją kuri sugeneruotų random skaičių masyvą ir jį gražintų. Funkcija priima tris kintamuosius,
+# min, max ir length reikšmėms nustatyti.
+print("_______________________5.________________________________")
+
+def rodyk_masyva(min, max, length):
+        return ([random.randint(min,max) for _ in range(length)])
+masyvas = rodyk_masyva(0,15,10)
+rnd_masyvas = rodyk_masyva(0,3,5) #masyvas 6 uzduociai atlikti
+print(masyvas)
+print(rnd_masyvas)
+
+
+# 6. Sukurkite Funkciją kuri panaudotų 5toje užduotyje sugeneruotą masyvą (priimtų kaip kintamąjį), susumuotų ir gražintų reikšmę.
+print("_______________________6.________________________________")
+print(rnd_masyvas) #masyvas is 5 tos uzduoties
+def Suma_masyvo(rnd_masyvas):
+    return sum(rnd_masyvas)
+
+print(Suma_masyvo(rnd_masyvas))
+
+# 7. Sukurkite Funkciją kuri priimtų 5toje užduotyje sugeneruotą masyvą ir gražintų jos skaičių vidurkį.
+print("_______________________7.________________________________")
+rnd_masyvas = rodyk_masyva(1,3,5)
+print(rnd_masyvas)
+
+def Vidurkis_masyvo(rnd_masyvas):
+    return sum(rnd_masyvas)/ len(rnd_masyvas)
+
+print(Vidurkis_masyvo(rnd_masyvas))
+print(round(Vidurkis_masyvo(rnd_masyvas),2))
+
+# 8. Sukurkite Funkciją kuri priimtų du skaičius ir atspausdintų stačiakampį užpildytą žvaigždutėmis.
+# Pirmas skaičius- išoriniam ciklui, antras vidiniam.
+print("_______________________8.________________________________")
+
+def staciakampis( a, b):
+    for i in range(a): # prasuka eilutes
+        for k in range(b): # prasuka stulpelius
+            print("* ", end="")
+        print()
+
+staciakampis(3,4)
+print("_______________________________________________________")
+
+# def staciakampis( a, b):
+#     String = ""  # pasiimame tuscia string
+#     for i in range(a): # prasuka eilutes
+#         for k in range(b): # prasuka stulpelius
+#             String += "* "
+#         String += "\n"
+#
+# staciakampis(3,4)
+# print(String)
+
+# 9. Sukurkite Funkciją kuri priimtų sakinį kaip kintamąjį ir atspausdintų kiek jame yra raidžių(simbolių) ir tarpų.
+# Sakinys - “Šiandien labai graži diena”. (kodas turi veikti padavus bet kokį sakinį) (simboliu yra 23, tarpu yra 3)
+print("_______________________9.________________________________")
+
+tekst = "Šiandien labai graži diena"
+
+def Text( tekst):
+    print(len(tekst))
+Text(tekst)
+print("_______________________________________________________")
+tekst = "Šiandien labai graži diena"
+def Raides_ir_tarpai( tekst):
+    tarpai = tekst.count(" ")
+    raides = len(tekst) - tarpai
+    return raides, tarpai
+
+rezultatas = Raides_ir_tarpai(tekst)
+print( "Raides:", rezultatas[0])
+print( "Tarpai:", rezultatas[1])
+
+print("_______________________________________________________")
+tekst = "Geras oras"
+def Raides_ir_tarpai( tekst):
+    tarpai = tekst.count(" ")
+    raides = len(tekst) - tarpai
+    return raides, tarpai
+
+rezultatas = Raides_ir_tarpai(tekst)
+print( "Raides:", rezultatas[0])
+print( "Tarpai:", rezultatas[1])
+print("_______________________________________________________")
+tekst = "Gyvenimas yra grazus"
+def Raides_ir_tarpai( tekst):
+    tarpai = tekst.count(" ")
+    raides = len(tekst) - tarpai
+    return raides, tarpai
+
+rezultatas = Raides_ir_tarpai(tekst)
+print( "Raides:", rezultatas[0])
+print( "Tarpai:", rezultatas[1])
+print("_______________________________________________________")
+
+print("_______________________10.________________________________")
+# 10.Sukurkite Funkciją kuri priimtų sakinį, jį užkoduotų ir grąžintų.
+# Kodavimas - sakinį apsukame iš kitos pusės. Pvz “Naglis” turi gautis “silgaN”.
+
+tekst = "Gyvenimas yra grazus"
+
+def Uzkoduoti( tekst): #tekstas su kuriuo dirbama
+    tekst[::-1] # apsukamas tekstas, pradedamas skaityti nuo pabaigos
+    return tekst[::-1]
+print(Uzkoduoti("Eugenija"))
+print(Uzkoduoti("Vaznyte"))
+print(Uzkoduoti("Gyvenimas yra grazus"))
+print(Uzkoduoti("Šiandien labai graži diena"))
+
+print("_______________________11.________________________________")
+# 11.Sukurti funkciją, kuri apsuka tik žodžius. “Labas rytas” -> “sabaL satyr” ir atspausdina rezultatą
+
+def Apsukti( tekst): #tekstas su kuriuo dirba funkcija
+    rezultatas = ""
+    for zodis in tekst.split(): # paleidziamas ciklas, kuris ima po zodi is padalinto teksto zodziu
+        rezultatas += zodis[::-1]+" "# kaupiame informacija kol sukasi zodziu ciklas+ pridedame " "
+    #print(rezultatas)
+    print(rezultatas.strip())# nuima nereikalingus tarpus is abieju zodzio pusiu
+Apsukti(" Gyvenimas grazus ")
+print("_______________________________________________________")
+
+def Apsukti( tekst): #tekstas su kuriuo dirba funkcija
+    rezultatas = ""
+    for zodis in tekst.split(): # paleidziamas ciklas, kuris ima po zodi is padalinto teksto zodziu
+        rezultatas += zodis[::-1]+" "# kaupiame informacija kol sukasi zodziu ciklas+ pridedame " "
+    print(rezultatas)
+    #print(rezultatas.strip())# nuima nereikalingus tarpus is abieju zodzio pusiu
+Apsukti(" Gyvenimas grazus ")
+print("_______________________________________________________")
+
+def Apsukti( tekst): #tekstas su kuriuo dirba funkcija
+    rezultatas = ""
+    for zodis in tekst.split(): # paleidziamas ciklas, kuris ima po zodi is padalinto teksto zodziu
+        rezultatas += zodis[::-1]+" "# kaupiame informacija kol sukasi zodziu ciklas+ pridedame " "
+    print(rezultatas)
+    #print(rezultatas.strip())# nuima nereikalingus tarpus is abieju zodzio pusiu
+Apsukti("Ko cia nori ?")
+
+
+# 12.Sukurkite funkciją, kuri priimtų masyvą ir atspausdintų tik tuos elementus kurie yra skaičiai.
+print("_______________________12.________________________________")
+
+def Atspausdink_tik_skaicius( masyvas ):
+    for elementas in masyvas:
+        if isinstance(elementas,(int, float)) and not isinstance(elementas, bool): # tikrina salyga ar sveikas skaicius, ar su kableliu ir ar ne booleans(true/ false)
+            print(elementas)
+
+masyvas= [1,5,"tu",True,6,False]
+Atspausdink_tik_skaicius( masyvas )
+print("_______________________________________________________")
+masyvas= [8.2,2,5,"you",True,6.5,False,"Gyvenimas"]
+Atspausdink_tik_skaicius( masyvas )
+print("_______________________________________________________")
+
+def Atspausdink_tik_skaicius( masyvas ):
+    for elementas in masyvas:
+        if type(elementas) in (int, float): # tikrina salyga elemento tipo is masyvo: sveikas skaicius, ar su kableliu
+            print( elementas, end=" ")
+    print()
+masyvas= [8.2,2,5,"you",True,6.5,False,"Gyvenimas",1,5,"tu",True,6,False]
+Atspausdink_tik_skaicius(masyvas)
+
+# 13.Sukurkite funkciją, kuri priima masyvą ir atspausdina tik sveikuosius skaičius.
+# (jei pavyks, patobulinkite, kad funkcija priimtų antrą parametrą True/False kuris nuspręstų
+# ar spausdins tik sveikuosius skaičius ar skaičius su kableliu.
+print("_______________________13.________________________________")
+def Atspausdink_tik_sveikus_skaicius(masyvas):
+    for elementas in masyvas:
+        if type(elementas) == int: # tikrina salyga elemento tipo is masyvo: ar jis sveikas skaicius
+            print( elementas) #atspausdina stulpeliu
+    print()
+masyvas= [8.2,2,5,"you",True,6.5,False,"Gyvenimas",1,5,"tu",True,6,False]
+Atspausdink_tik_sveikus_skaicius(masyvas)
+
+
+print("_______________________________________________________")
+
+def Atspausdink_tik_sveikus_skaicius(masyvas):
+    for elementas in masyvas:
+        if type(elementas) == int: # tikrina salyga elemento tipo is masyvo: ar jis sveikas skaicius
+            print( elementas, end= " ") #atspausdina eilute
+    print()
+masyvas= [8.2,2,5,"you",True,6.5,False,"Gyvenimas",1,5,"tu",True,6,False]
+Atspausdink_tik_sveikus_skaicius(masyvas)
+
+print("_______________________________________________________")
+def Atspausdink_skaicius_pagal_pasirinkima(masyvas):
+    for elementas in masyvas:
+        if type(elementas) == int: # tikrina salyga elemento tipo is masyvo: ar jis sveikas skaicius
+            print( elementas)
+        else:
+            type(elementas) == float
+    print()
+masyvas= [8.2,2,5,"you",True,6.5,False,"Gyvenimas",1,5,"tu",True,6,False]
+Atspausdink_tik_sveikus_skaicius(masyvas)
+
+# 14.Sukurkite funkciją word_count kuri priimtų textą ir gražintų kiek jame yra žodžių.
+# 15.Sukurkite funkciją kuri priima du parametrus. Skaičių masyvą ir boolean. Funkcija gražina prafiltruotą masyvą. Kai antras parametras True/tik poriniais skaičiais, False/tik neporiniais skaičiais.
+# 16.Sukurkite funkciją number_is_prime. Funkcija priima skaičių, gražina True/False ar skaičius pirminis.
+# 17.Sukurkite funkciją kuri priima du argumentus. Gražina pirmąjį skaičių pakeltą laipsniu tokiu kaip antras skaičius.
+# 18.Sukurkite funkciją kuri priima skaičių masyvą ir gražina tik skirtingus elementus. (panašiai kaip sql distinct)
+# 19.Sukurkite funkciją kuri priima tekstą ir atspausdina tekste daugiausiai pasikartojantį simbolį.
+# 20.Sukurkite funkciją kuri priima tekstą ir atspausdina jame esantį ilgiausią žodį.
