@@ -243,19 +243,89 @@ masyvas= [8.2,2,5,"you",True,6.5,False,"Gyvenimas",1,5,"tu",True,6,False]
 Atspausdink_tik_sveikus_skaicius(masyvas)
 
 print("_______________________________________________________")
-def Atspausdink_skaicius_pagal_pasirinkima(masyvas):
+def Atspausdink_skaicius_pagal_pasirinkima(masyvas, tik_sveiki):
     for elementas in masyvas:
-        if type(elementas) == int: # tikrina salyga elemento tipo is masyvo: ar jis sveikas skaicius
-            print( elementas)
+        if tik_sveiki == True:
+            if type(elementas) == int: # tikrina salyga elemento tipo is masyvo: ar jis sveikas skaicius
+                print( elementas)
         else:
-            type(elementas) == float
+            if type(elementas) == float:
+                print(elementas)
     print()
 masyvas= [8.2,2,5,"you",True,6.5,False,"Gyvenimas",1,5,"tu",True,6,False]
-Atspausdink_tik_sveikus_skaicius(masyvas)
+Atspausdink_skaicius_pagal_pasirinkima(masyvas,tik_sveiki= True)
+
+print("_______________________________________________________")
+def Atspausdink_skaicius_pagal_pasirinkima(masyvas, tik_sveiki):
+    tipas = int if tik_sveiki else float #( rasome true, jei sveiki ir false, jei su kableliu
+    for elementas in masyvas:
+        if type(elementas) == tipas: # tikrina salyga elemento tipo is masyvo: ar jis sveikas skaicius
+                print( elementas)
+    print()
+masyvas= [2.8,2.5,5,"you",True,5.5,False,"Gyvenimas",3,5,"tu",True,6.2,False]
+Atspausdink_skaicius_pagal_pasirinkima(masyvas,tik_sveiki=True)
 
 # 14.Sukurkite funkciją word_count kuri priimtų textą ir gražintų kiek jame yra žodžių.
-# 15.Sukurkite funkciją kuri priima du parametrus. Skaičių masyvą ir boolean. Funkcija gražina prafiltruotą masyvą. Kai antras parametras True/tik poriniais skaičiais, False/tik neporiniais skaičiais.
+print("_______________________14.________________________________")
+
+def Suskaiciuoti_zodzius( tekst ): #tekstas su kuriuo dirba funkcija
+     return len(tekst.split()) # isdalina teksta pagal tarpus ir grazina kiek zodziu tekste
+zodziai = Suskaiciuoti_zodzius("Grazus gyvenimas") # rezultatas
+print(zodziai)
+
+print("_______________________________________________________")
+def word_count(tekst):  # tekstas su kuriuo dirba funkcija
+    return len(tekst.split())  # isdalina teksta pagal tarpus ir grazina kiek zodziu tekste
+
+zodziai = word_count("Šiandien labai graži diena")  # rezultatas
+print(zodziai)
+
+# 15.Sukurkite funkciją kuri priima du parametrus. Skaičių masyvą ir boolean.
+# Funkcija gražina prafiltruotą masyvą. Kai antras parametras True/tik poriniais skaičiais,
+# False/tik neporiniais skaičiais.
+print("_______________________15.________________________________")
+def Grazink_skaicius_poriniai_neporiniai(masyvas, tik_poriniai):
+    rezultatas = [] # sukuriamas tuscias masyvas tinkamiems skaiciams
+    for skaicius in masyvas:
+        if tik_poriniai == True:
+            if skaicius % 2 == 0: # tikrina salyga skaiciaus; ar jis porinis
+                rezultatas.append(skaicius)
+        else:
+            if skaicius % 2 != 0: # tikrina salyga skaiciaus; ar jis neporinis
+                rezultatas.append(skaicius)
+    return rezultatas
+
+masyvas = [random.randint(1,5) for _ in range(5)]
+print(masyvas)
+rezultatas = Grazink_skaicius_poriniai_neporiniai(masyvas, tik_poriniai= False)
+print(rezultatas)
+
 # 16.Sukurkite funkciją number_is_prime. Funkcija priima skaičių, gražina True/False ar skaičius pirminis.
+print("_______________________16.________________________________")
+# def Grazink_skaicius_pirminiai_nepirminiai(masyvas, tik_pirminiai):
+#     rezultatas = [] # sukuriamas tuscias masyvas tinkamiems skaiciams
+#     for skaicius in masyvas:
+#         if tik_pirminiai == True:
+#             if skaicius % skaicius == 1 and skaicius % 1 == skaicius and skaicius > 1: # tikrina salyga skaiciaus; ar jis pirminiais
+#                 rezultatas.append(skaicius)
+#         else:
+#                 rezultatas.append(skaicius)
+#     return rezultatas
+#
+# masyvas = [random.randint(7,11) for _ in range(5)]
+# print(masyvas)
+# rezultatas = Grazink_skaicius_pirminiai_nepirminiai(masyvas, tik_pirminiai= True)
+# print(rezultatas)
+
+def numer_is_prime(n):
+    if n<=1: # patikrina ar ne 0 ir 1, nes jie nepirminiai
+        return False
+    for i in range( 2, n):
+        if n % i == 0:
+            return False
+    return True
+print(numer_is_prime())
+
 # 17.Sukurkite funkciją kuri priima du argumentus. Gražina pirmąjį skaičių pakeltą laipsniu tokiu kaip antras skaičius.
 # 18.Sukurkite funkciją kuri priima skaičių masyvą ir gražina tik skirtingus elementus. (panašiai kaip sql distinct)
 # 19.Sukurkite funkciją kuri priima tekstą ir atspausdina tekste daugiausiai pasikartojantį simbolį.
