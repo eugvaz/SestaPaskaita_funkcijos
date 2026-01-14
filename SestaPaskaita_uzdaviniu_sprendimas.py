@@ -319,14 +319,121 @@ print("_______________________16.________________________________")
 
 def numer_is_prime(n):
     if n<=1: # patikrina ar ne 0 ir 1, nes jie nepirminiai
-        return False
-    for i in range( 2, n):
+        return False # jei 0 ar 1, tai iskart grazina atsakyma
+    for i in range( 2, n): # tikrina visus galimus daugiklius nuo 2 iki n-2
         if n % i == 0:
             return False
     return True
-print(numer_is_prime())
+print(numer_is_prime(13))
 
 # 17.Sukurkite funkciją kuri priima du argumentus. Gražina pirmąjį skaičių pakeltą laipsniu tokiu kaip antras skaičius.
-# 18.Sukurkite funkciją kuri priima skaičių masyvą ir gražina tik skirtingus elementus. (panašiai kaip sql distinct)
+print("_______________________17.________________________________")
+def pakelti_laipsniu(a,b):
+    return pow(a,b) #laipsnio kelimo funkcija
+rezultatas = pakelti_laipsniu(10,15)
+print(rezultatas)
+print("_______________________________________________________")
+def pakelti_laipsniu(a,b):
+    return a**b # kelia laipsniu vietoj pow()
+rezultatas = pakelti_laipsniu(4,1)
+print(rezultatas)
+print("_______________________________________________________")
+# 18.Sukurkite funkciją kuri priima skaičių masyvą ir gražina tik skirtingus elementus.
+# (panašiai kaip sql distinct)
+print("_______________________18.________________________________")
+
+def Grazina_unikalius_skaicius(masyvas):
+    rezultatas = [] #sukuria tuscia masyva
+    for skaicius in masyvas:  # suka cikla
+        if skaicius not in rezultatas: # tikrina skaicius ar ju nera sukurtame masyve
+            rezultatas.append(skaicius) # jeigu nera, tai prideda
+    return rezultatas
+
+masyvas = [random.randint(0,3) for _ in range(7)]
+print(masyvas)
+rezultatas = Grazina_unikalius_skaicius(masyvas)
+print(rezultatas)
+print("_______________________________________________________")
+
+def Grazina_skirtingus_skaicius(masyvas):
+    return list(set(masyvas)) # pasalina pasikartojancius skaicius is masyvo, grazina sarasa, bet neislaiko pradinio masyvo eiliskumo
+
+masyvas = [random.randint(0,2) for _ in range(7)]
+print(masyvas)
+rezultatas = Grazina_skirtingus_skaicius(masyvas)
+print(rezultatas)
+
+
 # 19.Sukurkite funkciją kuri priima tekstą ir atspausdina tekste daugiausiai pasikartojantį simbolį.
+print("_______________________19.________________________________")
+def Atspausdinti_dazniausia_simboli( tekstas):
+    skaicius = {} # sukuriamas tuscias zodynas simboliams skaiciuoti
+    for simbolis in tekstas: # ciklas eina per kiekviena simboli tekste
+        if simbolis in skaicius: # tikrina ar simbolis yra zodyne
+            skaicius[simbolis]+= 1 # jeidu taip, tai prideda +1 prie jau esancio skaiciaus
+        else:
+            skaicius[simbolis] = 1 #jeigu ne, tai irasoma i zodyna ir pradeda skaiciuoti
+    dazniausia = max( skaicius, key= skaicius.get) # skaicius- simboliu pasikartojimai, esantys zodyne,
+    # key lygina pagal skaiciu reiksmes, iesko didziausios
+    print(dazniausia,"-",skaicius[dazniausia]) # atspausdina raide ir jos pasikartojimu skaiciu
+
+Atspausdinti_dazniausia_simboli("labai geras oras")
+print("_______________________________________________________")
+def Atspausdinti_dazniausius_simbolius( tekstas):
+    #tekstas = tekstas.replace(" ","") #panaikiname is teksto tarpus
+    didziausias = 0 # susikuriame skaitikli simboliu pasikartojimams skaiciuoti
+    for simbolis in tekstas: # ciklas eina per kiekviena simboli tekste
+        kiekis = tekstas.count(simbolis) # skaicius, kuris gaunamas
+        if kiekis > didziausias: # tikrina salyga ar kiekis didziausias
+            didziausias = kiekis # jei taip, tai padaro nauju didziausiu
+    rezultatas = [] #sukuriamas tuscias masyvas
+    for simbolis in tekstas:  # ciklas eina per kiekviena simboli tekste
+        if tekstas.count(simbolis) == didziausias and simbolis not in rezultatas:
+            rezultatas.append(simbolis)
+    print(rezultatas,"-",didziausias )
+
+Atspausdinti_dazniausius_simbolius("  visas geras oras ")
+print("_______________________________________________________")
+def Atspausdinti_dazniausius_simbolius( tekstas):
+    # tekstas = tekstas.replace(" ","") #panaikiname is teksto tarpus
+    rezultatas = []  # sukuriamas tuscias masyvas
+    didziausias = 0  # susikuriame skaitikli simboliu pasikartojimams skaiciuoti
+    for simbolis in tekstas: # ciklas eina per kiekviena simboli tekste
+        skaicius = tekstas.lower().count(simbolis)
+        if skaicius > didziausias:
+            didziausias = skaicius
+    for simbolis in tekstas:
+        if tekstas.lower().count(simbolis) == didziausias and simbolis not in rezultatas:
+            rezultatas.append(simbolis)
+    print(rezultatas,"-",didziausias )
+
+Atspausdinti_dazniausius_simbolius(" Ar visas geras oras")
+
+
 # 20.Sukurkite funkciją kuri priima tekstą ir atspausdina jame esantį ilgiausią žodį.
+print("_______________________20.________________________________")
+def Atspausdinti_ilgiausia_zodzi(tekst):  # tekstas su kuriuo dirba funkcija
+        ilgiausias = " " # sukuriamas kintamasis
+        for zodis in tekst.split():# isdalina teksta pagal tarpus ir grazina kiek zodziu tekste
+                if len( zodis) > len(ilgiausias):
+                    ilgiausias = zodis
+        print(ilgiausias)
+
+Atspausdinti_ilgiausia_zodzi("Gyvenimas yra nesamones")
+
+print("_______________________________________________________")
+
+
+def Atspausdinti_ilgiausius_zodzius(tekst):  # tekstas su kuriuo dirba funkcija
+    zodziai = tekst.split()  # isdalina teksta pagal tarpus ir grazina zodzius
+    max_ilgis = 0
+    for z in zodziai: # eina per kiek viena zodi, suskaiciuoja jo ilgi ir randa ilgiausia zodi tarp zodziu
+        if len(z) > max_ilgis:
+            max_ilgis = len(z)
+    rezultatas = []
+    for z in zodziai:
+        if len(z) == max_ilgis:
+            rezultatas.append(z)
+    print(rezultatas, "zodzio/zodziu ilgis:",max_ilgis)
+
+Atspausdinti_ilgiausius_zodzius("Gyvenimas yra nesamones")
