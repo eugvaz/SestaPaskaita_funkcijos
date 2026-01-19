@@ -92,8 +92,8 @@ print(round(Vidurkis_masyvo(rnd_masyvas),2))
 print("_______________________8.________________________________")
 
 def staciakampis( a, b):
-    for i in range(a): # prasuka eilutes
-        for k in range(b): # prasuka stulpelius
+    for i in range(a): # isorinis ciklas: kiek bus eiluciu, prasuka eilutes,
+        for k in range(b): # vidinis ciklas: kiek bus stulpeliu kiekvienoje eilute, prasuka stulpelius
             print("* ", end="")
         print()
 
@@ -170,7 +170,7 @@ print("_______________________11.________________________________")
 # 11.Sukurti funkciją, kuri apsuka tik žodžius. “Labas rytas” -> “sabaL satyr” ir atspausdina rezultatą
 
 def Apsukti( tekst): #tekstas su kuriuo dirba funkcija
-    rezultatas = ""
+    rezultatas = "" #sukuriamas tuscias stringas
     for zodis in tekst.split(): # paleidziamas ciklas, kuris ima po zodi is padalinto teksto zodziu
         rezultatas += zodis[::-1]+" "# kaupiame informacija kol sukasi zodziu ciklas+ pridedame " "
     #print(rezultatas)
@@ -249,7 +249,7 @@ def Atspausdink_skaicius_pagal_pasirinkima(masyvas, tik_sveiki):
             if type(elementas) == int: # tikrina salyga elemento tipo is masyvo: ar jis sveikas skaicius
                 print( elementas)
         else:
-            if type(elementas) == float:
+            if type(elementas) == float: # tikrina salyga elemento tipo is masyvo: ar jis su kableliu
                 print(elementas)
     print()
 masyvas= [8.2,2,5,"you",True,6.5,False,"Gyvenimas",1,5,"tu",True,6,False]
